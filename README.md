@@ -1,2 +1,1 @@
-# eCabCardio
-php laminas project
+PHP project using laminas
