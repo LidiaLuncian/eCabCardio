@@ -66,7 +66,8 @@
         "allow-plugins": {
             "laminas/laminas-component-installer": true,
             "laminas/laminas-skeleton-installer": true
-        }
+        },
+        "platform-check": false
     },
     "require-dev": {
         "laminas/laminas-developer-tools": "^2.1.1",
