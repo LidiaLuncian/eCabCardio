@@ -1,5 +1,6 @@
 <?php
 namespace Cardio\Controller;
+
 use Cardio\Model\UserTable;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
@@ -7,15 +8,15 @@ use Laminas\View\Model\ViewModel;
 class UserController extends AbstractActionController{
 
     private $table;
-
-    public function __construct(UserTable $table){
+    public function __construct(UserTable $table)
+    {
         $this->table = $table;
     }
 
     public function indexAction()
     {
         return new ViewModel([
-            'users' => $this->table->fetchAll(),
+            'Users' => $this->table->fetchAll(),
         ]);
     }
 

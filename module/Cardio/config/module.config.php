@@ -4,6 +4,7 @@ namespace Cardio;
 use Laminas\Router\Http\Segment;
 
 return [
+
     'router' => [
         'routes' => [
             'user' => [
@@ -24,7 +25,7 @@ return [
     ],
     'view_manager' => [
         'template_path_stack' => [
-            'cardio' => __DIR__ . '/../view',
+            'user' => __DIR__ . '/../view',
         ],
     ],
 ];

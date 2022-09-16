@@ -1,17 +1,17 @@
 <?php
 namespace Cardio\Model;
 
-use Laminas\Db\Sql\Ddl\Column\BigInteger;
-use Laminas\Db\Sql\Ddl\Column\Boolean;
+use DomainException;
 use Laminas\Filter\StringTrim;
 use Laminas\Filter\StripTags;
+use Laminas\Filter\ToInt;
 use Laminas\InputFilter\InputFilter;
 use Laminas\InputFilter\InputFilterAwareInterface;
 use Laminas\InputFilter\InputFilterInterface;
-use Laminas\Mvc\Exception\DomainException;
 use Laminas\Validator\StringLength;
 
-class User implements InputFilterAwareInterface{
+class User
+{
 
     public $id;
     public $username;
@@ -40,6 +40,19 @@ class User implements InputFilterAwareInterface{
         ));
     }
 
+    public function getArrayCopy()
+    {
+        return [
+            'id'     => $this->id,
+            'username' => $this->username,
+            'password'  => $this->password,
+            'firstName'  => $this->firstName,
+            'lastName'  => $this->lastName,
+            'isAdmin'  => $this->isAdmin,
+            'idClinic'  => $this->idClinic,
+        ];
+    }
+
     public function getInputFilter(){
         if($this->inputFilter){
             return $this->inputFilter;
@@ -51,7 +64,7 @@ class User implements InputFilterAwareInterface{
             'name' => 'id',
             'required' => true,
             'filters' => [
-                ['name' => BigInteger::class],
+                ['name' => ToInt::class],
             ],
         ]);
 
@@ -135,7 +148,7 @@ class User implements InputFilterAwareInterface{
             'name' => 'isAdmin',
             'required' => true,
             'filters' => [
-                ['name' => Boolean::class],
+                ['name' => ToInt::class],
             ],
         ]);
 
@@ -143,7 +156,7 @@ class User implements InputFilterAwareInterface{
             'name' => 'idClinic',
             'required' => true,
             'filters' => [
-                ['name' => BigInteger::class],
+                ['name' => ToInt::class],
             ],
         ]);
         $this->inputFilter = $inputFilter;

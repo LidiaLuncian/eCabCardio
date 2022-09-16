@@ -505,13 +505,28 @@ return [
                         'action' => 'index'
                     ]
                 ]
+            ],
+            'user' => [
+                'type' => 'Laminas\\Router\\Http\\Segment',
+                'options' => [
+                    'route' => '/user[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+'
+                    ],
+                    'defaults' => [
+                        'controller' => 'Cardio\\Controller\\UserController',
+                        'action' => 'index'
+                    ]
+                ]
             ]
         ]
     ],
     'view_manager' => [
         'template_path_stack' => [
             'laminas-developer-tools' => '/var/www/vendor/laminas/laminas-developer-tools/config/../view',
-            0 => '/var/www/module/Application/config/../view'
+            0 => '/var/www/module/Application/config/../view',
+            'user' => '/var/www/module/Cardio/config/../view'
         ],
         'display_not_found_reason' => true,
         'display_exceptions' => true,
@@ -529,5 +544,12 @@ return [
         'factories' => [
             'Application\\Controller\\IndexController' => 'Laminas\\ServiceManager\\Factory\\InvokableFactory'
         ]
+    ],
+    'db' => [
+        'driver' => 'Mysqli',
+        'database' => 'eCabCardio',
+        'username' => 'root',
+        'password' => 'password',
+        'host' => '172.24.0.3'
     ]
 ];
