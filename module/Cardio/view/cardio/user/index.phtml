@@ -18,7 +18,6 @@ $this->headTitle($title);
         <th>&nbsp;</th>
     </tr>
     <?php
-    $users = new ArrayObject();
     foreach ($users as $user) : ?>
         <tr>
             <td><?= $this->escapeHtml($user->username) ?></td>

@@ -2,6 +2,8 @@
 namespace Cardio\Model;
 
 use DomainException;
+use Laminas\Db\Sql\Ddl\Column\BigInteger;
+use Laminas\Filter\Boolean;
 use Laminas\Filter\StringTrim;
 use Laminas\Filter\StripTags;
 use Laminas\Filter\ToInt;
@@ -10,7 +12,7 @@ use Laminas\InputFilter\InputFilterAwareInterface;
 use Laminas\InputFilter\InputFilterInterface;
 use Laminas\Validator\StringLength;
 
-class User
+class User implements InputFilterAwareInterface
 {
 
     public $id;
@@ -27,10 +29,10 @@ class User
         $this->id     = !empty($data['id']) ? $data['id'] : null;
         $this->username     = !empty($data['username']) ? $data['username'] : null;
         $this->password     = !empty($data['password']) ? $data['password'] : null;
-        $this->firstName     = !empty($data['firstName']) ? $data['firstName'] : null;
-        $this->lastName     = !empty($data['lastName']) ? $data['lastName'] : null;
-        $this->isAdmin     = !empty($data['isAdmin']) ? $data['isAdmin'] : null;
-        $this->idClinic     = !empty($data['idClinic']) ? $data['idClinic'] : null;
+        $this->firstName     = !empty($data['first_name']) ? $data['first_name'] : null;
+        $this->lastName     = !empty($data['last_name']) ? $data['last_name'] : null;
+        $this->isAdmin     = !empty($data['is_admin']) ? $data['is_admin'] : null;
+        $this->idClinic     = !empty($data['id_clinic']) ? $data['id_clinic'] : null;
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter){
@@ -107,7 +109,7 @@ class User
         ]);
 
         $inputFilter->add([
-            'name' => 'firstName',
+            'name' => 'first_name',
             'required' => true,
             'filters' => [
                 ['name' => StripTags::class],
@@ -126,7 +128,7 @@ class User
         ]);
 
         $inputFilter->add([
-            'name' => 'lastName',
+            'name' => 'last_name',
             'required' => true,
             'filters' => [
                 ['name' => StripTags::class],
@@ -145,15 +147,15 @@ class User
         ]);
 
         $inputFilter->add([
-            'name' => 'isAdmin',
+            'name' => 'is_admin',
             'required' => true,
             'filters' => [
-                ['name' => ToInt::class],
+                ['name' => Boolean::class],
             ],
         ]);
 
         $inputFilter->add([
-            'name' => 'idClinic',
+            'name' => 'id_clinic',
             'required' => true,
             'filters' => [
                 ['name' => ToInt::class],

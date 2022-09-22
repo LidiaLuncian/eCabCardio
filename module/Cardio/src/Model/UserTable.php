@@ -37,10 +37,10 @@ class UserTable{
         $data = [
             'username' => $user->username,
             'password'  => $user->password,
-            'firstName'  => $user->firstName,
-            'lastName'  => $user->lastName,
-            'isAdmin'  => $user->isAdmin,
-            'idClinic'  => $user->idClinic,
+            'first_name'  => $user->firstName,
+            'last_name'  => $user->lastName,
+            'is_admin'  => $user->isAdmin,
+            'id_clinic'  => $user->idClinic,
         ];
 
         $id = (int) $user->id;

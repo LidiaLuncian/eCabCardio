@@ -1,1 +1,87 @@
 <?php
+$title = 'Add new user';
+$this->headTitle($title);
+?>
+    <h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+// This provides a default CSS class and placeholder text for the title element:
+$username = $form->get('username');
+$username->setAttribute('class', 'form-control');
+$username->setAttribute('placeholder', 'Username');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$password = $form->get('password');
+$password->setAttribute('class', 'form-control');
+$password->setAttribute('placeholder', 'Password');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$first_name = $form->get('first_name');
+$first_name->setAttribute('class', 'form-control');
+$first_name->setAttribute('placeholder', 'First Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$last_name = $form->get('last_name');
+$last_name->setAttribute('class', 'form-control');
+$last_name->setAttribute('placeholder', 'Last Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$is_admin = $form->get('is_admin');
+$is_admin->setAttribute('class', 'form-control');
+$is_admin->setAttribute('placeholder', 'Is admin?');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$id_clinic = $form->get('id_clinic');
+$id_clinic->setAttribute('class', 'form-control');
+$id_clinic->setAttribute('placeholder', 'Id clinic');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('user', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+// label, element, and errors separately within ?>
+    <div class="form-group">
+        <?= $this->formLabel($username) ?>
+        <?= $this->formElement($username) ?>
+        <?= $this->formElementErrors()->render($username, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($password) ?>
+        <?= $this->formElement($password) ?>
+        <?= $this->formElementErrors()->render($password, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($first_name) ?>
+        <?= $this->formElement($first_name) ?>
+        <?= $this->formElementErrors()->render($first_name, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($last_name) ?>
+        <?= $this->formElement($last_name) ?>
+        <?= $this->formElementErrors()->render($last_name, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($is_admin) ?>
+        <?= $this->formElement($is_admin) ?>
+        <?= $this->formElementErrors()->render($is_admin, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($id_clinic) ?>
+        <?= $this->formElement($id_clinic) ?>
+        <?= $this->formElementErrors()->render($id_clinic, ['class' => 'help-block']) ?>
+    </div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

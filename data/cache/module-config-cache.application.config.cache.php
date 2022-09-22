@@ -519,6 +519,20 @@ return [
                         'action' => 'index'
                     ]
                 ]
+            ],
+            'login' => [
+                'type' => 'Laminas\\Router\\Http\\Segment',
+                'options' => [
+                    'route' => '/login[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+'
+                    ],
+                    'defaults' => [
+                        'controller' => 'Cardio\\Controller\\LoginController',
+                        'action' => 'index'
+                    ]
+                ]
             ]
         ]
     ],
@@ -526,7 +540,8 @@ return [
         'template_path_stack' => [
             'laminas-developer-tools' => '/var/www/vendor/laminas/laminas-developer-tools/config/../view',
             0 => '/var/www/module/Application/config/../view',
-            'user' => '/var/www/module/Cardio/config/../view'
+            'user' => '/var/www/module/Cardio/config/../view',
+            'login' => '/var/www/module/Cardio/config/../view'
         ],
         'display_not_found_reason' => true,
         'display_exceptions' => true,
