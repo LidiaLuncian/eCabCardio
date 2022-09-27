@@ -1,10 +1,17 @@
 <?php
 namespace Cardio;
 
+use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
 
+//    'controllers' => [
+//        'factories' => [
+//            Controller\AuthController::class => InvokableFactory::class,
+//        ],
+//    ],
     'router' => [
         'routes' => [
             'user' => [
@@ -21,26 +28,26 @@ return [
                     ],
                 ],
             ],
-            'login' => [
-                'type'    => Segment::class,
+            'signup' => [
+                'type'    => Literal::class,
                 'options' => [
-                    'route' => '/login[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
+                    'route' => '/signup',
                     'defaults' => [
-                        'controller' => Controller\LoginController::class,
-                        'action'     => 'index',
+                        'controller' => Controller\AuthController::class,
+                        'action'     => 'create',
                     ],
                 ],
             ],
         ],
     ],
     'view_manager' => [
+        'template_map' =>[
+            'user/index' => __DIR__ . '/../view/cardio/user/index.phtml',
+            'auth/create' => __DIR__ . '/../view/cardio/auth/create.phtml',
+
+        ],
         'template_path_stack' => [
-            'user' => __DIR__ . '/../view',
-            'login'=> __DIR__ . '/../view',
+            'cardio' => __DIR__ . '/../view',
         ],
     ],
 ];

@@ -520,17 +520,13 @@ return [
                     ]
                 ]
             ],
-            'login' => [
-                'type' => 'Laminas\\Router\\Http\\Segment',
+            'signup' => [
+                'type' => 'Laminas\\Router\\Http\\Literal',
                 'options' => [
-                    'route' => '/login[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+'
-                    ],
+                    'route' => '/signup',
                     'defaults' => [
-                        'controller' => 'Cardio\\Controller\\LoginController',
-                        'action' => 'index'
+                        'controller' => 'Cardio\\Controller\\AuthController',
+                        'action' => 'create'
                     ]
                 ]
             ]
@@ -540,8 +536,7 @@ return [
         'template_path_stack' => [
             'laminas-developer-tools' => '/var/www/vendor/laminas/laminas-developer-tools/config/../view',
             0 => '/var/www/module/Application/config/../view',
-            'user' => '/var/www/module/Cardio/config/../view',
-            'login' => '/var/www/module/Cardio/config/../view'
+            'cardio' => '/var/www/module/Cardio/config/../view'
         ],
         'display_not_found_reason' => true,
         'display_exceptions' => true,
@@ -552,12 +547,15 @@ return [
             'layout/layout' => '/var/www/module/Application/config/../view/layout/layout.phtml',
             'application/index/index' => '/var/www/module/Application/config/../view/application/index/index.phtml',
             'error/404' => '/var/www/module/Application/config/../view/error/404.phtml',
-            'error/index' => '/var/www/module/Application/config/../view/error/index.phtml'
+            'error/index' => '/var/www/module/Application/config/../view/error/index.phtml',
+            'user/index' => '/var/www/module/Cardio/config/../view/cardio/user/index.phtml',
+            'auth/create' => '/var/www/module/Cardio/config/../view/cardio/auth/create.phtml'
         ]
     ],
     'controllers' => [
         'factories' => [
-            'Application\\Controller\\IndexController' => 'Laminas\\ServiceManager\\Factory\\InvokableFactory'
+            'Application\\Controller\\IndexController' => 'Laminas\\ServiceManager\\Factory\\InvokableFactory',
+            'Cardio\\Controller\\AuthController' => 'Laminas\\ServiceManager\\Factory\\InvokableFactory'
         ]
     ],
     'db' => [

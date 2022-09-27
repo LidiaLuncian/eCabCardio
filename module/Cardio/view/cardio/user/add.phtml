@@ -5,31 +5,32 @@ $this->headTitle($title);
     <h1><?= $this->escapeHtml($title) ?></h1>
 <?php
 // This provides a default CSS class and placeholder text for the title element:
+$form = $this->form;
 $username = $form->get('username');
 $username->setAttribute('class', 'form-control');
 $username->setAttribute('placeholder', 'Username');
 
-// This provides a default CSS class and placeholder text for the artist element:
+// This provides a default CSS class and placeholder text for the password element:
 $password = $form->get('password');
 $password->setAttribute('class', 'form-control');
 $password->setAttribute('placeholder', 'Password');
 
-// This provides a default CSS class and placeholder text for the artist element:
+// This provides a default CSS class and placeholder text for the first_name element:
 $first_name = $form->get('first_name');
 $first_name->setAttribute('class', 'form-control');
 $first_name->setAttribute('placeholder', 'First Name');
 
-// This provides a default CSS class and placeholder text for the artist element:
+// This provides a default CSS class and placeholder text for the last_name element:
 $last_name = $form->get('last_name');
 $last_name->setAttribute('class', 'form-control');
 $last_name->setAttribute('placeholder', 'Last Name');
 
-// This provides a default CSS class and placeholder text for the artist element:
+// This provides a default CSS class and placeholder text for the is_admin element:
 $is_admin = $form->get('is_admin');
 $is_admin->setAttribute('class', 'form-control');
 $is_admin->setAttribute('placeholder', 'Is admin?');
 
-// This provides a default CSS class and placeholder text for the artist element:
+// This provides a default CSS class and placeholder text for the id_clinic element:
 $id_clinic = $form->get('id_clinic');
 $id_clinic->setAttribute('class', 'form-control');
 $id_clinic->setAttribute('placeholder', 'Id clinic');

@@ -1,0 +1,113 @@
+<?php
+$title = $this->translate('Sign Up');
+# meta keywords
+$this->headMeta()->appendName('keywords', 'Sign Up, Create, Join, New Account');
+# meta description
+$this->headMeta()->appendName('description', 'Create new account');
+# page title
+$this->headTitle($this->escapeHtml($title));
+
+$form = $this->form;
+$form->setAttribute('action', $this->url('signup', ['action' => 'create']));
+$form->prepare();
+
+?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 shadow-sm">
+            <h3 class="mb-3 pt-2 text-md-center">
+                <?= $this->escapeHtml($this->translate('Create a new account')); ?>
+            </h3>
+
+            <?= $this->form()->openTag($form); ?>
+            <span class="form-text text-muted pb-2">
+                <?= sprintf(
+                        $this->translate('Already have an account? %sLogin here%s.'),
+                        '<a href="login">', '</a>');
+                ?>
+            </span>
+
+            <!-- add the username input field -->
+            <div class="mb-3">
+                <?= $this->formLabel($form->get('username')); ?>
+                <div class="">
+                    <?= $this->formText($form->get('username')); ?>
+                </div>
+
+                <div class="text-danger">
+                    <?= $this->formElementErrors($form->get('username')); ?>
+                </div>
+            </div>
+
+            <!-- add the username input field -->
+            <div class="mb-3">
+                <?= $this->formLabel($form->get('password')); ?>
+                <div class="">
+                    <?= $this->formText($form->get('password')); ?>
+                </div>
+
+                <div class="text-danger">
+                    <?= $this->formElementErrors($form->get('password')); ?>
+                </div>
+            </div>
+
+            <!-- add the first_name input field -->
+            <div class="mb-3">
+                <?= $this->formLabel($form->get('first_name')); ?>
+                <div class="">
+                    <?= $this->formText($form->get('first_name')); ?>
+                </div>
+
+                <div class="text-danger">
+                    <?= $this->formElementErrors($form->get('first_name')); ?>
+                </div>
+            </div>
+
+            <!-- add the last_name input field -->
+            <div class="mb-3">
+                <?= $this->formLabel($form->get('last_name')); ?>
+                <div class="">
+                    <?= $this->formText($form->get('last_name')); ?>
+                </div>
+
+                <div class="text-danger">
+                    <?= $this->formElementErrors($form->get('last_name')); ?>
+                </div>
+            </div>
+
+            <!-- add the is_admin input field -->
+            <div class="mb-3">
+                <?= $this->formLabel($form->get('is_admin')); ?>
+                <div class="">
+                    <?= $this->formText($form->get('is_admin')); ?>
+                </div>
+
+                <div class="text-danger">
+                    <?= $this->formElementErrors($form->get('is_admin')); ?>
+                </div>
+            </div>
+
+            <!-- add the id_clinic input field -->
+            <div class="mb-3">
+                <?= $this->formLabel($form->get('id_clinic')); ?>
+                <div class="">
+                    <?= $this->formText($form->get('id_clinic')); ?>
+                </div>
+
+                <div class="text-danger">
+                    <?= $this->formElementErrors($form->get('id_clinic')); ?>
+                </div>
+            </div>
+
+            <!-- submit button -->
+            <div class="mb-3">
+                <?= $this->formSubmit($form->get('submit')); ?>
+            </div>
+
+            <!-- close the form -->
+            <?= $this->form()->closeTag(); ?>
+
+        </div>
+    </div>
+</div>

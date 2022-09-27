@@ -58,8 +58,9 @@ class UserForm extends Form{
             'name' => 'submit',
             'type' => 'submit',
             'attributes' => [
-                'value' => 'Go',
+                'value' => 'Sign Up',
                 'id'    => 'submitbutton',
+                'class' => 'btn btn-primary'
             ],
         ]);
     }
